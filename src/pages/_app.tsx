@@ -8,7 +8,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider resetCSS theme={theme}>
       <PageContainer>
-        
+        <Component {...pageProps}/>
       </PageContainer>
     </ChakraProvider>
   )
