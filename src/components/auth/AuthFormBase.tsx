@@ -9,7 +9,7 @@ export const AuthFormBase: React.FC<AuthFormBaseProps> = ({ children }) => {
       return (
             <Flex flexGrow={1} width={"100%"} justifyContent={"center"} alignItems={"center"}>
                   <Flex
-                        minW={"325px"}
+                        width={"350px"}
                         background={"gray.700"}
                         flexDir={"column"}
                         alignItems={"center"}
