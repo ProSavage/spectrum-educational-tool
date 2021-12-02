@@ -9,12 +9,7 @@ const Index = () => {
 
   const router = useRouter();
 
-  useEffect(() => {
-    console.log(user, "user")
-    if (user === null || user.aud !== "authenticated") {
-      router.push("/auth/login")
-    }
-  }, [])
+  
 
 
   const signout = () => {
