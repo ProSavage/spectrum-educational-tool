@@ -1,22 +1,27 @@
 import React, { useEffect, useState } from "react";
-import { Flex, Text } from "@chakra-ui/react";
+import { Button, Divider, Flex, Input, Radio, RadioGroup, Text } from "@chakra-ui/react";
 import { supabase } from "../../supabase/init";
 import { definitions } from "../../supabase/types";
+import { CaseStudyQuestion } from "../../components/case-select/CaseStudyQuestion";
 
 const CaseSelect = (props: { case_study_id: number }) => {
 
   const [study, setStudy] = useState<definitions["case-studies"]>()
+  const [checkAnswers, setCheckAnswers] = useState(false);
+  const [hasIncorrectAnswer, setHasIncorrectAnswer] = useState(true);
 
 
   const fetchData = async () => {
     const { data, error } = await supabase.from<definitions["case-studies"]>("case-studies").select("*").match({ id: props.case_study_id });
     console.log(data, error)
     setStudy(data[0])
+    console.log(data[0])
   }
 
   useEffect(() => {
     fetchData()
   }, [props.case_study_id])
+
 
 
   const renderIfStudy = () => {
@@ -31,7 +36,19 @@ const CaseSelect = (props: { case_study_id: number }) => {
       <Flex p={3} flexDir={"column"}>
         <Text fontSize={"2xl"} fontWeight={"bold"}>Description:</Text>
         <Text mt={2} fontSize={"lg"}>{study.description}</Text>
+        <Divider my={5} />
+        <Text fontSize={"2xl"} fontWeight={"bold"}>Questions:</Text>
+        {/* 
+          Supabase's OpenAPI types generator says "JSON" columns are strings, whereas they give a response as a object
+          So we just cast as any and keep moving :/
+        */}
+        {(study.discussion_question as any).map(question => <CaseStudyQuestion checkAnswers={checkAnswers} question={question} />)}
+        <Flex>
+          <Button colorScheme={"orange"} mr={2} onClick={() => setCheckAnswers(!checkAnswers)}>Check Answers</Button>
+          <Button colorScheme={"blue"} isDisabled={!checkAnswers}>Mark Complete</Button>
+        </Flex>
       </Flex>
+
     </Flex>
 
   }

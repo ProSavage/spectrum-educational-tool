@@ -29,8 +29,8 @@ const Index = () => {
       <Text fontWeight={"bold"}>Email: <chakra.span fontWeight={"medium"}>{user.email}</chakra.span>
       </Text>
       <Flex my={2}>
-        <Button m={1}>Case Studies</Button>
-        <Button onClick={() => signout()} colorScheme={"red"} m={1}>Log Out</Button>
+        {/* <Button m={1}>Case Studies</Button> */}
+        <Button onClick={() => signout()} colorScheme={"red"} >Log Out</Button>
       </Flex>
     </Flex>
   }
