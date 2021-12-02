@@ -17,9 +17,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   // this logged in check is bound to the router's pathname
   // So it will trigger on page load, but also on each redirect.
-  
+
   useEffect(() => {
-    console.log(user, "user")
+    if (router.pathname === "/auth/signup") return;
     if (user === null || user.aud !== "authenticated") {
       router.push("/auth/login")
     }
