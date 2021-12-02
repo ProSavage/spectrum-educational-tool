@@ -7,7 +7,7 @@ interface AuthFormBaseProps {
 
 export const AuthFormBase: React.FC<AuthFormBaseProps> = ({ children }) => {
       return (
-            <Flex width={"100%"} justifyContent={"center"} alignItems={"center"}>
+            <Flex flexGrow={1} width={"100%"} justifyContent={"center"} alignItems={"center"}>
                   <Flex
                         minW={"325px"}
                         background={"gray.700"}
