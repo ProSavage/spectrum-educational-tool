@@ -4,8 +4,11 @@ import { Formik, Form } from "formik";
 import { FormInputField } from "../../components/utilities/FormControlField";
 import { supabase } from "../../supabase/init";
 import { AuthFormBase } from "../../components/auth/AuthFormBase";
+import { useRouter } from "next/router";
 
 const Signup = () => {
+
+      const router = useRouter();
       return <AuthFormBase>
             <Text my={2} fontWeight={"bold"} fontSize={"2xl"}>Signup</Text>
             <Formik
@@ -22,6 +25,13 @@ const Signup = () => {
                                     email: values.email,
                                     password: values.password
                               })
+
+                        if (error) {
+                              setErrors({confirmPassword: error.message})
+                              return
+                        }
+
+                        router.push("/")
                   }}
             >
                   {({ values, isSubmitting }) => (
