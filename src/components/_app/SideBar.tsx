@@ -1,6 +1,6 @@
 import { Box, Button, Flex, Text } from "@chakra-ui/react";
 import React from "react"
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 interface SideBarProps {
 
 }
@@ -30,6 +30,7 @@ export const SideBar: React.FC<SideBarProps> = ({ }) => {
                   <Text fontSize={"lg"} my={1} fontWeight={"bold"} textAlign={"center"}>Spectrum Education</Text>
                   <Flex flexDir={"column"} justifyContent={"center"} height={"100%"} width={"100%"}>
                         {items.map(item => <Box
+                              key={item.link}
                               pl={2}
                               py={2}
                               width={"100%"}
