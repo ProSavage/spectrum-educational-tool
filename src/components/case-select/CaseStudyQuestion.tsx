@@ -4,10 +4,9 @@ import React from "react"
 interface CaseStudyQuestionProps {
       question: any
       checkAnswers: boolean
-      setAnswerIncorrect: () => void
 }
 
-export const CaseStudyQuestion: React.FC<CaseStudyQuestionProps> = ({ question, checkAnswers, setAnswerIncorrect }) => {
+export const CaseStudyQuestion: React.FC<CaseStudyQuestionProps> = ({ question, checkAnswers }) => {
 
       const [value, setValue] = React.useState("false")
 
